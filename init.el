@@ -1,11 +1,11 @@
-(setq mac-pass-command-to-system nil)
-
 (setq inhibit-startup-message t)
+(setq column-number-mode t)
 
 (scroll-bar-mode -1) ; Disable visible scrollbar
 (tool-bar-mode -1)   ; Disable the toolbar
 (tooltip-mode -1)    ; Disable tooltips
 (menu-bar-mode -1)   ; Disable the menu bar
+(global-display-line-numbers-mode) ; Display line number
 
 (global-set-key (kbd "<escape>") 'keyboard-escape-quit)
 
@@ -29,7 +29,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
-   '(doom-modeline ivy use-package spacemacs-theme neotree lsp-mode elixir-mode centaur-tabs)))
+   '(vscode-icon dired-sidebar doom-modeline ivy use-package spacemacs-theme neotree lsp-mode elixir-mode centaur-tabs)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -62,3 +62,15 @@
 (use-package spacemacs-theme
   :defer t
   :init (load-theme 'spacemacs-dark t))
+
+(use-package vscode-icon
+  :ensure t
+  :commands (vscode-icon-for-file))
+
+(use-package dired-sidebar
+  :ensure t
+  :bind (("C-x C-n" . dired-sidebar-toggle-sidebar))
+  :commands (dired-sidebar-tiggle-sidebar)
+  :config
+  (setq dired-sidebar-subtree-line-prefix "__")
+  (setq dired-sidebar-theme "vscode"))
