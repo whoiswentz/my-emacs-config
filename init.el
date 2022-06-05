@@ -73,4 +73,4 @@
   :commands (dired-sidebar-tiggle-sidebar)
   :config
   (setq dired-sidebar-subtree-line-prefix "__")
-  (setq dired-sidebar-theme "vscode"))
+  (setq dired-sidebar-theme 'vscode))
