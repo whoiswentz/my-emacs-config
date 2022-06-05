@@ -58,3 +58,7 @@
 (use-package doom-modeline
   :ensure t
   :init (doom-modeline-mode 1))
+
+(use-package spacemacs-theme
+  :defer t
+  :init (load-theme 'spacemacs-dark t))
