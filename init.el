@@ -29,7 +29,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
-   '(vscode-icon dired-sidebar doom-modeline ivy use-package spacemacs-theme neotree lsp-mode elixir-mode centaur-tabs)))
+   '(centur-tabs expand-region vscode-icon dired-sidebar doom-modeline ivy use-package spacemacs-theme neotree lsp-mode elixir-mode centaur-tabs)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -72,5 +72,21 @@
   :bind (("C-x C-n" . dired-sidebar-toggle-sidebar))
   :commands (dired-sidebar-tiggle-sidebar)
   :config
-  (setq dired-sidebar-subtree-line-prefix "__")
-  (setq dired-sidebar-theme 'vscode))
+  (setq dired-sidebar-subtree-line-prefix " ")
+  (setq dired-sidebar-theme 'vscode)
+  (setq dired-sidebar-use-custom-font t))
+
+(use-package centaur-tabs
+  :ensure t
+  :config (setq centaur-tabs-set-bar 'over
+		centaur-tabs-set-icons t
+		centaur-tabs-gray-out-icons 'buffer
+		centaur-tabs-set-modified-marker t
+		centaur-tabs-modifier-marker ".")
+  (centaur-tabs-mode t))
+
+(use-package expand-region
+  :ensure t
+  :bind
+  ("C-=" . er/expand-region)
+  ("C--" . er/contract-region))
