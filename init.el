@@ -11,7 +11,9 @@
 
 (require 'package)
 
-(setq package-archives '(("melpa" . "http://melpa.org/packages/")))
+(setq package-archives '(("melpa" . "http://melpa.org/packages/")
+			 ("elpa" . "https://elpa.gnu.org/packages/")
+			 ("org" . "https://orgmode.org/elpa/")))
 
 (package-initialize)
 (unless package-archive-contents
@@ -19,6 +21,9 @@
 
 (unless (package-installed-p 'use-package)
   (package-install 'use-package))
+
+(unless (package-installed-p 'cider)
+  (package-install 'cider))
 
 (require 'use-package)
 (setq use-package-always-ensure t)
@@ -29,7 +34,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
-   '(centur-tabs expand-region vscode-icon dired-sidebar doom-modeline ivy use-package spacemacs-theme neotree lsp-mode elixir-mode centaur-tabs)))
+   '(cider centur-tabs expand-region vscode-icon dired-sidebar doom-modeline ivy use-package spacemacs-theme neotree lsp-mode elixir-mode centaur-tabs)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -84,9 +89,3 @@
 		centaur-tabs-set-modified-marker t
 		centaur-tabs-modifier-marker ".")
   (centaur-tabs-mode t))
-
-(use-package expand-region
-  :ensure t
-  :bind
-  ("C-=" . er/expand-region)
-  ("C--" . er/contract-region))
